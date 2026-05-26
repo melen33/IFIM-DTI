@@ -1,0 +1,12 @@
+numpy
+pandas
+scikit-learn
+torch
+torch-geometric
+transformers
+peft
+omegaconf
+rdkit
+prettytable
+tqdm
+pyyaml
