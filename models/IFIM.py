@@ -105,6 +105,13 @@ class IFIM(nn.Module):
         self.linear_v = nn.Linear(d_esm, dim)
         self.pr_linear = nn.Linear(d_esm, d_model)
 
+        self.mlp_fusion = torch.nn.Sequential(
+            torch.nn.Linear(self.d_model * 2, self.d_model),
+            torch.nn.ReLU(),
+            torch.nn.Dropout(0.1),
+            torch.nn.Linear(self.d_model, self.d_model)
+        )
+
         self.llm_tokenizer = AutoTokenizer.from_pretrained(
             self.llm_model_path,
             trust_remote_code=True
